@@ -1,4 +1,8 @@
-# React + Vite
+# FARHAN-HAZIQ
+
+A portfolio website built with React and Vite.
+
+## About the Project
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
