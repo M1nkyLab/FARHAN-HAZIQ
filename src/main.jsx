@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import Name from './Pages/Name.jsx'
 import Aboutme from './Pages/Aboutme.jsx'
-import Creations from './Pages/creations.jsx'
+import Creations from './Pages/Creations.jsx'
 import Tools from './Pages/Tools.jsx'
 import Contact from './Pages/Contact.jsx'
 
