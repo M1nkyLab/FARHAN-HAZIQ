@@ -15,7 +15,8 @@ function Tools() {
     { name: 'Node.js', src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
     { name: 'Firebase', src: 'https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg' },
     { name: 'Figma', src: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
-    { name: 'Git', src: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg' },
+    // Updated Git logo URL to the icon-only version
+    { name: 'Git', src: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg' },
   ];
 
   // We duplicate the arrays to ensure the loop is seamless (items appear instantly at the start when the end is reached)
@@ -24,7 +25,7 @@ function Tools() {
   const seamlessTools = [...tools, ...tools, ...tools];
 
   return (
-    <section className="h-[60vh] bg-white flex flex-col items-center justify-center gap-12 overflow-hidden py-10">
+    <section className="h-[40vh] bg-white flex flex-col items-center justify-center gap-12 overflow-hidden py-10">
       
       {/* CSS Styles for the Animations */}
       <style>{`
@@ -57,8 +58,8 @@ function Tools() {
                   src={lang.src}
                   alt={lang.name}
                   title={lang.name}
-                  // Changed from w-16 h-16 to w-24 h-24
-                  className="w-24 h-24 object-contain"
+                  // Added 'grayscale' class here
+                  className="w-24 h-24 object-contain grayscale"
                 />
               </div>
             ))}
@@ -79,8 +80,8 @@ function Tools() {
                   src={tool.src}
                   alt={tool.name}
                   title={tool.name}
-                  // Changed from w-16 h-16 to w-24 h-24
-                  className="w-24 h-24 object-contain"
+                  // Added 'grayscale' class here
+                  className="w-24 h-24 object-contain grayscale"
                 />
               </div>
             ))}
