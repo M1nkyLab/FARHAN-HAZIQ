@@ -1,28 +1,40 @@
 function Contact() {
   return (
-    <section className="h-[70vh] px-6 py-16 bg-black">
-        <h1 className="text-left text-5xl lg:text-7xl font-bold mb-10">
-            Let's Collaborate
+    <section className="h-screen px-6 bg-black flex flex-col">
+
+      {/* Top Section */}
+      <div className="pt-16">
+        <h1 className="text-left text-5xl lg:text-7xl font-bold">
+          Let's Collaborate
         </h1>
+      </div>
 
-        <div>
-          <a href="mailto: syedhaziq457@gmail.com" className="block w-full h-65 text-center text-2xl lg:text-5xl py-17">syedhaziq457@gmail.com</a>
-        </div>
+      {/* Middle Section */}
+      <div className="flex-grow flex items-center justify-center">
+        <a
+            href="mailto:syedhaziq457@gmail.com"
+            className="text-2xl lg:text-5xl text-center"
+          >
+            syedhaziq457@gmail.com
+        </a>
 
-        <div className="flex items-center justify-center">
-          <div className="w-full">
-            <a href="https://github.com/M1nkyLab" className="block w-full h-65 text-center border border-white py-4 hover:bg-gray-100 transition">Github</a>
-          </div>
+      </div>
 
-          <div className="w-full">
-            <a href="https://www.linkedin.com/in/syed-farhan-haziq-886a41345/" className=" block w-full h-65 text-center border border-white py-4 hover:bg-gray-100 transition">Linkedin</a>
-          </div>
+      {/* Bottom Section */}
+      <div className="flex w-full pb-6">
+        <a href="https://github.com/M1nkyLab" className="w-full text-4xl text-center py-4">
+          Github
+        </a>
 
-          <div className="w-full">
-            <a href="./Syed_Haziq_Resume.pdf" className="block w-full h-65 text-center border border-white py-4 hover:bg-gray-100 transition cursor-pointer">Resume</a>
-          </div>
-          
-        </div>
+        <a href="https://www.linkedin.com/in/syed-farhan-haziq-886a41345/" className="w-full text-4xl text-center py-4">
+          Linkedin
+        </a>
+
+        <a href="https://drive.google.com/file/d/1lO_urLcf8hncYzfpGd6YhFTMPetTYiJQ/view?usp=sharing" className="w-full text-4xl text-center py-4">
+          Resume
+        </a>
+      </div>
+
     </section>
   );
 }
