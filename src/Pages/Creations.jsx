@@ -4,30 +4,32 @@ import ScrollVelocity from "../Components/ScrollVelocity";
 
 function Creations() {
   // ⭐ Projects Data
-  const projects = [
+    const projects = [
     {
       title: "Pokestellar",
       subtitle: "Pokémon E-Commerce Web Application",
       tech: "HTML5, JavaScript, Tailwind CSS, PHP, MySQL, XAMPP, Git, NPM",
       desc: "Pokémon-themed e-commerce website where users can browse Pokémon cards, view details, and make purchases.",
       link: "https://github.com/M1nkyLab/Pokestellar-website.git",
-      image: "/yourImage/pokemon.png",
+      image: "/Pokestellar Project.png",
     },
     {
-      title: "Axiata Arena ParkMate",
-      subtitle: "Smart Parking Management System",
+      title: "ParkMate",
+      subtitle: "Axiata Arena Smart Parking App",
       tech: "Kotlin, Android Studio, Firebase, XML UI, JavaScript",
-      desc: "Manage medication schedules with notifications and dose tracking.",
-      link: "https://your-link.com",
-      image: "/yourImage/parkmate.png",
+      desc: "A smart parking app for Axiata Arena that helps users find available parking spots and view real-time parking updates.",
+      link: "https://github.com/M1nkyLab/ParkMate.git",
+      image: "/ParkMate Project.jpg",
+      fit: "object-contain bg-white",
     },
     {
       title: "MedNot",
       subtitle: "Medication Reminder App (Group Project)",
       tech: "Kotlin, Android Studio, Firebase, XML UI",
       desc: "Manage medication schedules with notifications and dose tracking.",
-      link: "https://your-link.com",
-      image: "/yourImage/mednot.png",
+      link: "https://github.com/M1nkyLab/MedNot.git",
+      image: "/Mednot Project.png", 
+      fit: "object-contain bg-[#0A0F1B]",
     },
   ];
 
@@ -66,11 +68,12 @@ function Creations() {
             className="w-full max-w-md mx-auto rounded-3xl overflow-hidden bg-[#0A0F1B] border border-black shadow-lg hover:scale-[1.02] transition-transform duration-300"
           >
             {/* Top Preview Image */}
-            <div className="h-52 w-full bg-gray-200">
+            <div className="h-52 w-full bg-[#0A0F1B]"> {/* Changed bg to match card color */}
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                // 👇 UPDATE THIS CLASSNAME
+                className={`w-full h-full ${project.fit || "object-cover"}`} 
               />
             </div>
 

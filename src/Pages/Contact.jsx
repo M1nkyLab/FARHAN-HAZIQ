@@ -1,5 +1,24 @@
 import React from 'react';
 
+const animatedUnderlineClass = `
+    relative 
+    inline-block 
+    cursor-pointer
+    transition-colors 
+    duration-300 
+    hover:text-purple-700 
+    after:content-[''] 
+    after:absolute 
+    after:w-0 
+    after:h-[2px] 
+    after:bg-purple-700 
+    after:left-0 
+    after:bottom-0 
+    after:transition-all 
+    after:duration-300 
+    hover:after:w-full
+  `;
+
 function Contact() {
   return (
     <section className="h-screen px-6 bg-gradient-to-b from-white via-black to-black flex flex-col justify-between">
@@ -27,7 +46,7 @@ function Contact() {
           href="https://github.com/M1nkyLab" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="w-full text-2xl lg:text-4xl text-center py-4 hover:text-gray-300 transition-colors"
+          className={`w-full text-2xl lg:text-4xl text-center py-4 hover:text-gray-300 transition-colors ${animatedUnderlineClass}`}
         >
           Github
         </a>
@@ -36,7 +55,7 @@ function Contact() {
           href="https://www.linkedin.com/in/syed-farhan-haziq-886a41345/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="w-full text-2xl lg:text-4xl text-center py-4 hover:text-gray-300 transition-colors"
+          className={`w-full text-2xl lg:text-4xl text-center py-4 hover:text-gray-300 transition-colors ${animatedUnderlineClass}`}
         >
           Linkedin
         </a>
@@ -45,7 +64,7 @@ function Contact() {
           href="https://drive.google.com/file/d/158C7md3zv7ljCXM5k_CfkYDp9Yem1rKb/view?usp=drive_link" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="w-full text-2xl lg:text-4xl text-center py-4 hover:text-gray-300 transition-colors"
+          className={`w-full text-2xl lg:text-4xl text-center py-4 hover:text-gray-300 transition-colors ${animatedUnderlineClass}`}
         >
           Resume
         </a>

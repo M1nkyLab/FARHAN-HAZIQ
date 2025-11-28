@@ -1,5 +1,4 @@
 import React from "react";
-// import ScrollVelocity from "../Components/ScrollVelocity"; // Keep this if you are using it elsewhere
 
 function Aboutme() {
   // We define a reusable class string to keep the JSX clean
