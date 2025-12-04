@@ -61,7 +61,7 @@ function Contact() {
         </a>
 
         <a 
-          href="https://drive.google.com/file/d/158C7md3zv7ljCXM5k_CfkYDp9Yem1rKb/view?usp=drive_link" 
+          href="https://drive.google.com/file/d/1933zm3_78kCu3VT9VWhF1Ibv7xriFm82/view?usp=sharing" 
           target="_blank" 
           rel="noopener noreferrer"
           className={`w-full text-2xl lg:text-4xl text-center py-4 hover:text-gray-300 transition-colors ${animatedUnderlineClass}`}
