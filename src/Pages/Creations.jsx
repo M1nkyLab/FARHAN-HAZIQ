@@ -16,7 +16,7 @@ function Creations() {
     {
       title: "ParkMate",
       subtitle: "Axiata Arena Smart Parking App",
-      tech: "Kotlin, Android Studio, Firebase, XML UI, JavaScript",
+      tech: "Kotlin, Android Studio, Firebase, XML UI, JavaScript, Figma",
       desc: "A smart parking app for Axiata Arena that helps users find available parking spots and view real-time parking updates.",
       link: "https://github.com/M1nkyLab/ParkMate.git",
       image: "/ParkMate Project.jpg",
@@ -25,7 +25,7 @@ function Creations() {
     {
       title: "MedNot",
       subtitle: "Medication Reminder App (Group Project)",
-      tech: "Kotlin, Android Studio, Firebase, XML UI",
+      tech: "Kotlin, Android Studio, Firebase, XML UI, Figma",
       desc: "Manage medication schedules with notifications and dose tracking.",
       link: "https://github.com/M1nkyLab/MedNot.git",
       image: "/Mednot Project.png", 
