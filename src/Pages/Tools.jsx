@@ -84,7 +84,7 @@ function Tools() {
                   src={tool.src}
                   alt={tool.name}
                   title={tool.name}
-                  // Same responsive sizing here
+                  // Same responsive sizing heres
                   className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
