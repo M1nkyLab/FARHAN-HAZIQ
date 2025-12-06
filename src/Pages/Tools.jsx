@@ -15,26 +15,26 @@ function Tools() {
     { name: 'Node.js', src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
     { name: 'Firebase', src: 'https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg' },
     { name: 'Figma', src: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
-    // Updated Git logo URL to the icon-only version
     { name: 'Git', src: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg' },
   ];
 
-  // We duplicate the arrays to ensure the loop is seamless (items appear instantly at the start when the end is reached)
-  // Since "languages" is a short list, we duplicate it 6 times to fill the screen width.
-  const seamlessLanguages = [...languages, ...languages, ...languages, ...languages, ...languages, ...languages]; 
-  const seamlessTools = [...tools, ...tools, ...tools];
+  // Duplicate arrays to ensure seamless looping
+  // We ensure there is enough content to overflow even wide screens
+  const seamlessLanguages = [...languages, ...languages, ...languages, ...languages, ...languages, ...languages, ...languages, ...languages]; 
+  const seamlessTools = [...tools, ...tools, ...tools, ...tools];
 
   return (
-    <section className="h-[40vh] bg-white flex flex-col items-center justify-center gap-12 overflow-hidden py-10">
+    // Changed h-[40vh] to min-h to prevent cutting off on small vertical screens
+    // Added responsive padding (py-10 to md:py-20)
+    <section className="min-h-[40vh] bg-white flex flex-col items-center justify-center gap-8 md:gap-12 overflow-hidden py-10 md:py-16">
       
-      {/* CSS Styles for the Animations */}
       <style>{`
         @keyframes scroll-left {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); } /* Move to -50% because list is doubled/tripled */
+          100% { transform: translateX(-50%); }
         }
         @keyframes scroll-right {
-          0% { transform: translateX(-50%); } /* Start halfway */
+          0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
         .animate-scroll-left {
@@ -43,23 +43,30 @@ function Tools() {
         .animate-scroll-right {
           animation: scroll-right 30s linear infinite;
         }
+        /* Pause animation on hover */
+        .hover\\:pause:hover {
+          animation-play-state: paused;
+        }
+        /* Fading mask effect */
+        .mask-gradient {
+          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
       `}</style>
 
       {/* Languages Section - Left to Right */}
-      <div className="w-full max-w-4xl">
-        <h2 className="text-xl font-bold mb-6 text-center">Languages</h2>
-        
-        {/* Carousel Container */}
+      <div className="w-full max-w-6xl px-4">
         <div className="relative w-full overflow-hidden mask-gradient">
-          <div className="flex w-max gap-8 animate-scroll-right hover:pause">
+          {/* Adjusted gap for mobile (gap-6) vs desktop (md:gap-12) */}
+          <div className="flex w-max gap-6 md:gap-12 animate-scroll-right hover:pause">
             {seamlessLanguages.map((lang, index) => (
-              <div key={index} className="flex-shrink-0">
+              <div key={index} className="flex-shrink-0 flex items-center justify-center">
                 <img
                   src={lang.src}
                   alt={lang.name}
                   title={lang.name}
-                  // Added 'grayscale' class here
-                  className="w-24 h-24 object-contain grayscale"
+                  // Responsive sizing: w-16 (mobile) -> w-20 (tablet) -> w-24 (desktop)
+                  className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}
@@ -68,20 +75,17 @@ function Tools() {
       </div>
 
       {/* Tools Section - Right to Left */}
-      <div className="w-full max-w-4xl">
-        <h2 className="text-xl font-bold mb-6 text-center">Tools</h2>
-        
-        {/* Carousel Container */}
+      <div className="w-full max-w-6xl px-4">
         <div className="relative w-full overflow-hidden mask-gradient">
-          <div className="flex w-max gap-8 animate-scroll-left hover:pause">
+          <div className="flex w-max gap-6 md:gap-12 animate-scroll-left hover:pause">
             {seamlessTools.map((tool, index) => (
-              <div key={index} className="flex-shrink-0">
+              <div key={index} className="flex-shrink-0 flex items-center justify-center">
                 <img
                   src={tool.src}
                   alt={tool.name}
                   title={tool.name}
-                  // Added 'grayscale' class here
-                  className="w-24 h-24 object-contain grayscale"
+                  // Same responsive sizing here
+                  className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}
