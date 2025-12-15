@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 function Tools() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
   // Data for Languages
   const languages = [
     { name: 'HTML', src: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg' },
@@ -19,14 +28,11 @@ function Tools() {
   ];
 
   // Duplicate arrays to ensure seamless looping
-  // We ensure there is enough content to overflow even wide screens
   const seamlessLanguages = [...languages, ...languages, ...languages, ...languages, ...languages, ...languages, ...languages, ...languages]; 
   const seamlessTools = [...tools, ...tools, ...tools, ...tools];
 
   return (
-    // Changed h-[40vh] to min-h to prevent cutting off on small vertical screens
-    // Added responsive padding (py-10 to md:py-20)
-    <section className="min-h-[40vh] bg-white flex flex-col items-center justify-center gap-8 md:gap-12 overflow-hidden py-10 md:py-16">
+    <section ref={ref} className="min-h-[40vh] bg-white flex flex-col items-center justify-center gap-8 md:gap-12 overflow-hidden py-10 md:py-16">
       
       <style>{`
         @keyframes scroll-left {
@@ -43,11 +49,9 @@ function Tools() {
         .animate-scroll-right {
           animation: scroll-right 30s linear infinite;
         }
-        /* Pause animation on hover */
         .hover\\:pause:hover {
           animation-play-state: paused;
         }
-        /* Fading mask effect */
         .mask-gradient {
           mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -55,9 +59,8 @@ function Tools() {
       `}</style>
 
       {/* Languages Section - Left to Right */}
-      <div className="w-full max-w-6xl px-4">
+      <motion.div style={{ y }} className="w-full max-w-6xl px-4">
         <div className="relative w-full overflow-hidden mask-gradient">
-          {/* Adjusted gap for mobile (gap-6) vs desktop (md:gap-12) */}
           <div className="flex w-max gap-6 md:gap-12 animate-scroll-right hover:pause">
             {seamlessLanguages.map((lang, index) => (
               <div key={index} className="flex-shrink-0 flex items-center justify-center">
@@ -65,17 +68,16 @@ function Tools() {
                   src={lang.src}
                   alt={lang.name}
                   title={lang.name}
-                  // Responsive sizing: w-16 (mobile) -> w-20 (tablet) -> w-24 (desktop)
                   className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Tools Section - Right to Left */}
-      <div className="w-full max-w-6xl px-4">
+      <motion.div style={{ y }} className="w-full max-w-6xl px-4">
         <div className="relative w-full overflow-hidden mask-gradient">
           <div className="flex w-max gap-6 md:gap-12 animate-scroll-left hover:pause">
             {seamlessTools.map((tool, index) => (
@@ -84,14 +86,13 @@ function Tools() {
                   src={tool.src}
                   alt={tool.name}
                   title={tool.name}
-                  // Same responsive sizing heres
                   className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
     </section>
   );

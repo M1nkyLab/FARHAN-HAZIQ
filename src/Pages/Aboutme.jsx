@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 function Aboutme() {
-  // Updated Styles:
-  // 1. Added 'font-poppins' for the new look.
-  // 2. Kept the minimal black/white theme.
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  // Content moves slightly faster/slower than scroll to create depth
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
   
+  // Opacity fade in
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
+
   const animatedUnderlineClass = `
     relative 
     inline-block 
@@ -27,28 +36,19 @@ function Aboutme() {
   `;
 
   return (
-    <section className="relative h-screen w-full bg-white flex flex-col items-center justify-center px-6 overflow-hidden">
+    <section ref={ref} className="relative h-screen w-full bg-white flex flex-col items-center justify-center px-6 overflow-hidden">
       
-      {/* --- FONT IMPORT & STYLES --- */}
+      {/* --- FONT IMPORT --- */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
-        
-        .font-poppins {
-          font-family: 'Poppins', sans-serif;
-        }
-
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fade-in-up {
-          animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
       `}</style>
 
       {/* --- CONTENT --- */}
-      <div className="relative z-10 max-w-4xl w-full text-center space-y-10 animate-fade-in-up font-poppins">
+      <motion.div 
+        style={{ y, opacity }}
+        className="relative z-10 max-w-4xl w-full text-center space-y-10 font-poppins"
+      >
         
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight leading-[1.15]">
           Hello, I'm{" "}
@@ -72,7 +72,7 @@ function Aboutme() {
           I love exploring new technologies and bringing creative ideas to life.
         </p>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

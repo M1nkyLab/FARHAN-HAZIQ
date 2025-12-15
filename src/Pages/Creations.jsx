@@ -1,8 +1,16 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import ScrollVelocity from "../Components/ScrollVelocity";
 
 function Creations() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
   // ⭐ Projects Data
     const projects = [
     {
@@ -44,7 +52,7 @@ function Creations() {
   };
 
   return (
-    <section className="min-h-screen bg-white overflow-y-auto px-6 py-16">
+    <section ref={containerRef} className="min-h-screen bg-white overflow-hidden px-6 py-16">
       {/* ⭐ Scrolling Title */}
       <ScrollVelocity
         texts={["MY CREATIONS ★"]}
@@ -52,27 +60,29 @@ function Creations() {
         className="custom-scroll-text text-black"
       />
 
-      {/* ⭐ Project Cards */}
-      <div className="mt-16 flex flex-col md:flex-row gap-8 w-full">
+      {/* ⭐ Project Cards with Parallax */}
+      <motion.div 
+        style={{ y }}
+        className="mt-16 flex flex-col md:flex-row gap-8 w-full"
+      >
         {projects.map((project, index) => (
           <motion.a
             key={index}
             custom={index}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             variants={cardVariants}
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full max-w-md mx-auto rounded-3xl overflow-hidden bg-[#0A0F1B] border border-black shadow-lg hover:scale-[1.02] transition-transform duration-300"
+            className="w-full max-w-md mx-auto rounded-3xl overflow-hidden bg-[#0A0F1B] border border-black shadow-lg hover:scale-[1.02] transition-transform duration-300 block"
           >
             {/* Top Preview Image */}
-            <div className="h-52 w-full bg-[#0A0F1B]"> {/* Changed bg to match card color */}
+            <div className="h-52 w-full bg-[#0A0F1B]"> 
               <img
                 src={project.image}
                 alt={project.title}
-                // 👇 UPDATE THIS CLASSNAME
                 className={`w-full h-full ${project.fit || "object-cover"}`} 
               />
             </div>
@@ -107,7 +117,7 @@ function Creations() {
             </div>
           </motion.a>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

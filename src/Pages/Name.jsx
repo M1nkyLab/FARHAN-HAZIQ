@@ -1,15 +1,29 @@
-import '../App.css'
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import '../App.css';
 import LiquidEther from '../Components/LiquidEther.jsx';
 
 function App() {
+  const ref = useRef(null);
+  
+  // Track scroll progress of this specific section
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  // Parallax effects: 
+  // Text moves down slower than scroll (0 -> 150px)
+  // Opacity fades out as you scroll down (1 -> 0)
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <div>
+    <div ref={ref}>
       {/* SECTION 1: HERO */}
       <section className='relative h-screen w-full overflow-hidden bg-black'>
           
           {/* LAYER 1: Fluid Animation Background */}
-          {/* z-0 places it at the back. inset-0 stretches it to fill screen. */}
           <div className="absolute inset-0 z-0">
             <LiquidEther
               colors={[ '#FFFFFF', '#F8F8F8', '#EFEFEF' ]}
@@ -30,13 +44,14 @@ function App() {
             />
           </div>
 
-          {/* OPTIONAL: Dark Overlay */}
-          {/* This adds a slight dark tint so the white text is easier to read over the bright fluid */}
+          {/* Dark Overlay */}
           <div className="absolute inset-0 z-0 bg-black/30 pointer-events-none"></div>
 
-          {/* LAYER 2: Main Content */}
-          {/* z-10 places it on top. pointer-events-none allows mouse to pass through to the fluid */}
-          <div className="relative z-10 h-full flex flex-col justify-center items-center pointer-events-none">
+          {/* LAYER 2: Main Content with Parallax */}
+          <motion.div 
+            style={{ y, opacity }}
+            className="relative z-10 h-full flex flex-col justify-center items-center pointer-events-none"
+          >
             
             {/* Main Text */}
             <h1 className="text-white font-bold text-4xl md:text-7xl lg:text-9xl whitespace-nowrap drop-shadow-lg">
@@ -44,7 +59,6 @@ function App() {
             </h1>
 
             {/* Scroll Down Arrow */}
-            {/* pointer-events-auto re-enables clicking just for this button */}
             <div className="absolute bottom-10 pointer-events-auto cursor-pointer hover:scale-110 transition-transform">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -58,7 +72,7 @@ function App() {
               </svg>
             </div>
 
-          </div>
+          </motion.div>
 
       </section>
 
