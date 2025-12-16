@@ -52,9 +52,9 @@ function Aboutme() {
       >
         
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight leading-[1.15]">
-            Hello, im {" "}
+            Hello, Im {" "}
              <span className={animatedUnderlineClass}>
-              farhan haziq
+              Farhan Haziq
             </span>
             <br />
             <span className="text-2xl md:text-4xl lg:text-5xl font-medium text-gray-400 mt-4 block">
@@ -69,9 +69,9 @@ function Aboutme() {
         <div className="w-16 h-1 bg-gray-200 mx-auto rounded-full"></div>
 
         {/* --- SCROLL REVEAL QUOTE SECTION --- */}
-        <div className="pt-8 text-lg md:text-xl font-medium text-gray-800 italic">
+        <div className="pt-8 text-lg md:text-xl font-medium text-gray-800 italic leading-loose">
           <div>
-            I'm a Front-end and software development enthusiast, passionate about crafting modern web and mobile applications. 
+            I'm a <span className="bg-black text-white rounded-md px-2 py-1">Front-end and software development</span> enthusiast, passionate about crafting <span className="bg-black text-white rounded-md px-2 py-1">modern web</span> and <span className="bg-black text-white rounded-md px-2 py-1">mobile applications</span>. 
             I love exploring new technologies and bringing creative ideas to life.
           </div>
         </div>
