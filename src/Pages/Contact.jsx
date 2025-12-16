@@ -16,19 +16,17 @@ function Contact() {
     relative 
     inline-block 
     font-poppins
-    font-light
     !text-white 
     no-underline
     cursor-pointer
     transition-colors 
     duration-300 
-    hover:!text-purple-400 
     
     after:content-[''] 
     after:absolute 
     after:w-0 
     after:h-[1px] 
-    after:bg-purple-400 
+    after:bg-white 
     after:left-0 
     after:bottom-0 
     after:transition-all 
@@ -46,18 +44,11 @@ function Contact() {
 
       <motion.div style={{ y, opacity }} className="h-full flex flex-col justify-between">
         
-        {/* Top Section - Title */}
-        <div className="pt-20 font-poppins">
-          <h1 className="text-left text-5xl lg:text-7xl font-extrabold text-black tracking-tight">
-            Let's Collaborate
-          </h1>
-        </div>
-
         {/* Middle Section - Email */}
         <div className="flex-grow flex items-center justify-center">
           <a
             href="mailto:syedhaziq457@gmail.com"
-            className={`text-2xl lg:text-5xl ${linkStyle}`}
+            className={`text-2xl lg:text-8xl font-poppins !font-[600] ${linkStyle}`}
           >
             syedhaziq457@gmail.com
           </a>
