@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { inject } from '@vercel/analytics'
+import SmoothScroll from "./Components/SmoothScroll.jsx";
 import './index.css'
 import Preloader from "./Components/Preloader.jsx";
 import Name from './Pages/Name.jsx'
@@ -14,15 +15,17 @@ inject()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <SmoothScroll>
     <Preloader />
       {/* Your real website content */}
       <div className="opacity-100">
         {/* Your website components */}
       </div>
-    <Name />
-    <Aboutme/>
-    <Creations/>
-    <Tools/>
-    <Contact/>
+    <section className="section"><Name /></section>
+        <section className="section"><Aboutme /></section>
+        <section className="section"><Creations /></section>
+        <section className="section"><Tools /></section>
+        <section className="section"><Contact /></section>
+    </SmoothScroll>
   </StrictMode>,
 )

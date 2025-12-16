@@ -33,7 +33,7 @@ export default function IntroLoader() {
             }
           `}
         >
-          FARHAN
+          Welcome To
         </div>
 
         {/* RIGHT TEXT */}
@@ -48,7 +48,7 @@ export default function IntroLoader() {
             }
           `}
         >
-          HAZIQ
+          My Portfolio
         </div>
 
       </div>

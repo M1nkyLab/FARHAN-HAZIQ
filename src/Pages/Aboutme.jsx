@@ -51,16 +51,10 @@ function Aboutme() {
         className="relative z-10 max-w-4xl w-full text-center space-y-10 font-poppins"
       >
         
-        <ScrollReveal
-          baseOpacity={0}
-          enableBlur={true}
-          baseRotation={5}
-          blurStrength={10}
-        >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight leading-[1.15]">
-            Hello, I'm{" "}
-            <span className={animatedUnderlineClass}>
-              Farhan Haziq
+            Hello, im {" "}
+             <span className={animatedUnderlineClass}>
+              farhan haziq
             </span>
             <br />
             <span className="text-2xl md:text-4xl lg:text-5xl font-medium text-gray-400 mt-4 block">
@@ -71,22 +65,15 @@ function Aboutme() {
               .
             </span>
           </h1>
-        </ScrollReveal>
 
         <div className="w-16 h-1 bg-gray-200 mx-auto rounded-full"></div>
 
         {/* --- SCROLL REVEAL QUOTE SECTION --- */}
         <div className="pt-8 text-lg md:text-xl font-medium text-gray-800 italic">
-          <ScrollReveal
-            baseOpacity={0}
-            enableBlur={true}
-            baseRotation={5}
-            blurStrength={10}
-          >
-            When does a man die? When he is hit by a bullet? No! When he suffers a disease?
-            No! When he ate a soup made out of a poisonous mushroom?
-            No! A man dies when he is forgotten!
-          </ScrollReveal>
+          <div>
+            I'm a Front-end and software development enthusiast, passionate about crafting modern web and mobile applications. 
+            I love exploring new technologies and bringing creative ideas to life.
+          </div>
         </div>
 
       </motion.div>
